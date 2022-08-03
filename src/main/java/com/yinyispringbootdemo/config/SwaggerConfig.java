@@ -6,10 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.ApiKey;
-import springfox.documentation.service.AuthorizationScope;
-import springfox.documentation.service.SecurityReference;
+import springfox.documentation.service.*;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
@@ -29,7 +26,7 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo())
                 .select()
                 //swagger测试的controller路径
-                .apis(RequestHandlerSelectors.basePackage("com.example.demo.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.yinyispringbootdemo.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 //下面两行为header中的Authorization认证，如不需要可不添加
@@ -46,12 +43,10 @@ public class SwaggerConfig {
                 .build();
     }
 
-    private List<ApiKey> securitySchemes() {
-        //设置请求头信息
-        List<ApiKey> result = new ArrayList<>();
-        ApiKey apiKey = new ApiKey("Authorization", "Authorization", "header");
-        result.add(apiKey);
-        return result;
+    private List<SecurityScheme> securitySchemes() {
+        List<SecurityScheme> securitySchemes = new ArrayList<>();
+        securitySchemes.add(new ApiKey("Authorization", "Authorization", "header"));
+        return securitySchemes;
     }
 
     private List<SecurityContext> securityContexts() {
