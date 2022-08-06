@@ -20,6 +20,7 @@
         <druid.version>1.0.18</druid.version>
         <mybatis-plus-boot-starter.version>3.4.1</mybatis-plus-boot-starter.version>
         <javafaker.version>1.0.2</javafaker.version>
+        <nacos.version>0.2.12</nacos.version>
     </properties>
 
     <dependencies>
@@ -110,7 +111,7 @@
             <version>${druid.version}</version>
         </dependency>
 
-
+        <!--mybatis-plus-->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
@@ -125,6 +126,19 @@
             <version>${javafaker.version}</version>
         </dependency>
 
+
+        <!-- https://mvnrepository.com/artifact/com.alibaba.boot/nacos-config-spring-boot-starter -->
+        <dependency>
+            <groupId>com.alibaba.boot</groupId>
+            <artifactId>nacos-config-spring-boot-starter</artifactId>
+            <version>${nacos.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.boot</groupId>
+            <artifactId>nacos-discovery-spring-boot-starter</artifactId>
+            <version>${nacos.version}</version>
+        </dependency>
 
 
     </dependencies>
