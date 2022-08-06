@@ -1,4 +1,4 @@
-package com.yinyispringbootdemo.dao;
+package com.yinyispringbootdemo.entity;
 
 import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.enums.ApiErrorCode;

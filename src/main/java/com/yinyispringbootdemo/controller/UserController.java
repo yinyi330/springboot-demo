@@ -3,7 +3,7 @@ package com.yinyispringbootdemo.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.yinyispringbootdemo.dao.ResponesData;
+import com.yinyispringbootdemo.entity.ResponesData;
 import com.yinyispringbootdemo.entity.User;
 import com.yinyispringbootdemo.service.UserService;
 import io.swagger.annotations.ApiOperation;
