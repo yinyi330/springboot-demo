@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yinyispringbootdemo.dao.UserDao">
+
+    <resultMap type="com.yinyispringbootdemo.entity.User" id="UserMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="age" column="age" jdbcType="INTEGER"/>
+        <result property="sex" column="sex" jdbcType="INTEGER"/>
+        <result property="address" column="address" jdbcType="VARCHAR"/>
+        <result property="useflag" column="useflag" jdbcType="VARCHAR"/>
+        <result property="inserttime" column="inserttime" jdbcType="TIMESTAMP"/>
+        <result property="updatetime" column="updatetime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into yinyi.user(name, age, sex, address, useflag, inserttime, updatetime)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.name}, #{entity.age}, #{entity.sex}, #{entity.address}, #{entity.useflag}, #{entity.inserttime},
+            #{entity.updatetime})
+        </foreach>
+    </insert>
+    <!-- 批量插入或按主键更新 -->
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into yinyi.user(name, age, sex, address, useflag, inserttime, updatetime)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.name}, #{entity.age}, #{entity.sex}, #{entity.address}, #{entity.useflag}, #{entity.inserttime},
+            #{entity.updatetime})
+        </foreach>
+        on duplicate key update
+        name = values(name) , age = values(age) , sex = values(sex) , address = values(address) , useflag =
+        values(useflag) , inserttime = values(inserttime) , updatetime = values(updatetime)
+    </insert>
+
+</mapper>
+
